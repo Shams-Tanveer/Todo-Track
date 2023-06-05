@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "263787982803",
+    "project_id": "todo-track-233a8",
+    "storage_bucket": "todo-track-233a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263787982803:android:ee3e3dae17095eb4de0926",
+        "android_client_info": {
+          "package_name": "com.example.todo_track"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263787982803-3aihtnoq6b7upc35t1gv119ffrf8t9bs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVuaTeL1pjTrg16x0PTjc_MXwckx1JxCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263787982803-3aihtnoq6b7upc35t1gv119ffrf8t9bs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
