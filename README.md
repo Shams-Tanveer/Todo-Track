@@ -1,16 +1,38 @@
-# todo_track
+# Todo Track
 
-A new Flutter project.
+The Todo Track app is a versatile mobile application built with Flutter that helps you stay organized and support causes you care about. It combines a powerful todo list feature with API integration and a payment gateway for making donations.
+
+
+## Features
+#### Todo List: 
+Easily create and manage your tasks, set due dates, and mark them as complete. Stay organized and never forget an important task again.
+
+#### API Integration: 
+The app is connected with external APIs to fetch laptop's information.
+
+#### Payment Gateway: 
+The app integrates with Stripe payment gateway, allowing you to donate with just a few taps.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this app on your local machine, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+#### Clone this repository:
+```sh
+git clone https://github.com/Shams-Tanveer/Todo-Track.git
+```
+#### Navigate to the project directory:
+```sh
+cd todo_track
+```
+#### Install dependencies:
+```sh
+flutter pub get
+```
+#### Run the app:
+```sh
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Ensure you have an emulator running or a physical device connected.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
