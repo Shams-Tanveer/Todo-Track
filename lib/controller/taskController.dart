@@ -43,7 +43,7 @@ class TaskController extends GetxController {
           .collection('tasks')
           .doc(toDoController.selectedTask.value.id)
           .update({TaskFields.isCompleted: true}).then((value) {
-        Get.off(() => ToDoScreen());
+        Get.back();
       });
     } catch (e) {
       SnackBarUtility.showSnackBar("Could Not Mark the Task as Completed");
@@ -57,7 +57,7 @@ class TaskController extends GetxController {
           .doc(toDoController.selectedTask.value.id)
           .delete()
           .then((value) {
-        Get.off(() => ToDoScreen());
+        Get.back();
       });
     } catch (e) {
       SnackBarUtility.showSnackBar("Could Not Delete The Task");
@@ -72,7 +72,7 @@ class TaskController extends GetxController {
           .update({
             TaskFields.taskName: nameController.value.text.trim(),
             TaskFields.taskDescription: descriptionController.value.text.trim()}).then((value) {
-        Get.off(() => ToDoScreen());
+        Get.back();
       });
     } catch (e) {
       SnackBarUtility.showSnackBar("Could Update Task");
