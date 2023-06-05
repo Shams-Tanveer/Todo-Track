@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todo_track/components/customColor.dart';
+import 'package:todo_track/screens/taskScreen.dart';
 
 import '../model/taskModel.dart';
 

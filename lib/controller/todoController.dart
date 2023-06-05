@@ -4,15 +4,23 @@ import 'package:get/get.dart';
 
 import '../model/taskModel.dart';
 
+
+/*Responsible for streaming the added task list and to select the a specific task to see details */
 class ToDoController extends GetxController {
-  var searchWord = "".obs;
   var selectedDate =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
           .obs;
 
   setSelectedDate(DateTime date) {
     selectedDate.value = DateTime(date.year, date.month, date.day);
-    print(selectedDate.value);
+  }
+
+
+  var selectedTask =Task(taskName: "", taskDescription: "", createdAt: DateTime.now(), isCompleted: false).obs;
+
+
+  setSelectedTask(Task task){
+    selectedTask.value = task;
   }
 
   Stream<List<Task>> readTasks() => FirebaseFirestore.instance

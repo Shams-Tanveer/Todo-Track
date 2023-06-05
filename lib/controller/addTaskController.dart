@@ -7,6 +7,8 @@ import 'package:todo_track/model/taskModel.dart';
 
 import '../components/customColor.dart';
 
+
+/* This controller is responsible for adding new task to the to do list. */
 class AddTaskController extends GetxController {
   var name = "".obs;
   var description = "".obs;

@@ -9,6 +9,8 @@ import 'package:todo_track/screens/apiDetailsScreen.dart';
 import '../components/customColor.dart';
 import '../components/themeswitch.dart';
 
+
+/*This screen is used to fetch and show laptop. The information is collected through my personal api.*/
 class ApiScreen extends StatelessWidget {
   ApiScreen({super.key});
 
@@ -24,7 +26,7 @@ class ApiScreen extends StatelessWidget {
                 padding: EdgeInsets.only(top: 60),
                 child: _apiController.laptopList.length == 0
                     ? Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(color: CustomColorConstants.buttonBrightColor,),
                       )
                     : ListView.builder(
                         itemCount: _apiController.laptopList.length,

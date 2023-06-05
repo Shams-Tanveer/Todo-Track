@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../components/snackBar.dart';
+import '../main.dart';
 import '../model/userModel.dart' as UserModel;
 
 class GoogleServices {
@@ -17,11 +18,13 @@ class GoogleServices {
       final user = UserModel.User(
             email: userCredential.user!.email!)
         .toJson();
-
+    
     FirebaseFirestore.instance.collection("users").add(user).then((value) {
       user["id"] = value.id;
       value.set(user);
+      
     }).catchError((onError)=>SnackBarUtility.showSnackBar(onError));
     }
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

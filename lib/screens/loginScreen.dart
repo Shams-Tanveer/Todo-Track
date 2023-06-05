@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:todo_track/components/appName.dart';
 import 'package:todo_track/components/customButton.dart';
 import 'package:todo_track/controller/loginController.dart';
 import 'package:todo_track/controller/signInUpController.dart';
 import 'package:todo_track/controller/themeController.dart';
-import 'package:todo_track/screens/registrationScreen.dart';
 
 import '../components/customColor.dart';
 import '../components/customTextField.dart';
 import '../components/themeswitch.dart';
 
+/* This is the Login Screen where you can securely log in using your email and password with Firebase Authentication or conveniently sign in using your Google account. */
 class LoginScreen extends StatelessWidget {
-  LoginScreen({
-    Key? key
-  }): super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   final LoginController _loginController = Get.put(LoginController());
   final ThemeController _controller = Get.find();
@@ -74,35 +70,13 @@ class LoginScreen extends StatelessWidget {
                       updateValue: _loginController.getTextFiledPassword,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      //Navigator.push(
-                      //    context,
-                      //    MaterialPageRoute(
-                      //        builder: (context) => ResetPassword()),
-                      //  );
-                    },
-                    child: Container(
-                      alignment: Alignment.topRight,
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      ),
-                    ),
-                  ),
                   SizedBox(
                     height: 10,
                   ),
                   MyButton(
                     text: "Log In",
                     onPressed: () {
-                      _loginController.loginUser();
+                      _loginController.loginUser(context);
                     },
                     fromLeft: CustomColorConstants.buttonLightColor,
                     toRight: CustomColorConstants.buttonBrightColor,
@@ -191,10 +165,10 @@ class LoginScreen extends StatelessWidget {
                       GestureDetector(
                           onTap: _signInUpController.toggleBetween,
                           child: Text(
-                        "Create an account.",
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold),
-                      ))
+                            "Create an account.",
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ))
                     ],
                   )
                 ],

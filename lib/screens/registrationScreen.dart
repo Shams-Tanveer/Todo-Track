@@ -12,6 +12,7 @@ import '../components/customColor.dart';
 import '../components/customTextField.dart';
 import '../components/themeswitch.dart';
 
+/* This is the registration where you need to provide your email id and password with atleast 6 characters to register to the systemm */
 class RegistrationScreen extends StatelessWidget {
   RegistrationScreen({Key? key}) : super(key: key);
 
@@ -76,20 +77,22 @@ class RegistrationScreen extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Obx(() => CustomTextField(
-                      hintText: "Confirm Password",
-                      obscureText: false,
-                      errorText:
-                          _registrationController.confirmPasswordError.value,
-                      visibilityFunction: null,
-                      updateValue:
-                          _registrationController.getTextFieldConfirmPassword),),
+                  Obx(
+                    () => CustomTextField(
+                        hintText: "Confirm Password",
+                        obscureText: false,
+                        errorText:
+                            _registrationController.confirmPasswordError.value,
+                        visibilityFunction: null,
+                        updateValue: _registrationController
+                            .getTextFieldConfirmPassword),
+                  ),
                   const SizedBox(
                     height: 12,
                   ),
                   MyButton(
                     text: "Sign Up",
-                    onPressed: (){
+                    onPressed: () {
                       _registrationController.signUp(context);
                     },
                     fromLeft: CustomColorConstants.buttonLightColor,

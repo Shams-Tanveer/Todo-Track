@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:todo_track/screens/homeScreen.dart';
-import 'package:todo_track/screens/todoScreen.dart';
 import 'components/bottomNavigator.dart';
 import 'components/snackBar.dart';
 import 'controller/themeController.dart';
@@ -12,6 +13,8 @@ import 'theme/thememanagement.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await dotenv.load();
+  Stripe.publishableKey = dotenv.env["PUBLISHABLE_KEY"]!;
   Get.put(ThemeController());
   runApp(MyApp());
 }

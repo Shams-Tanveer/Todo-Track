@@ -9,6 +9,8 @@ import '../components/themeswitch.dart';
 import '../controller/themeController.dart';
 import 'loginScreen.dart';
 
+
+/*This is the home screen */
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 

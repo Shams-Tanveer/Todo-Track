@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:todo_track/components/snackBar.dart';
 
+/*This Controller is responsible to fetch the data of all the laptops and of a specific single laptop using api when initialized. */
+
 class ApiController extends GetxController {
   var laptopList = [].obs;
 

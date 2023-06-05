@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:todo_track/components/bottomNavigator.dart';
-import 'package:todo_track/components/customButton.dart';
 import 'package:todo_track/components/customColor.dart';
 import 'package:todo_track/components/dateBox.dart';
 import 'package:todo_track/components/todoWidget.dart';
@@ -12,9 +7,12 @@ import 'package:todo_track/controller/addTaskController.dart';
 import 'package:todo_track/controller/themeController.dart';
 import 'package:todo_track/controller/todoController.dart';
 import 'package:todo_track/model/taskModel.dart';
+import 'package:todo_track/screens/taskScreen.dart';
 
 import '../components/themeswitch.dart';
 
+
+/*This is the To Do list screen. User can see the to do list for a specific date and can add new task.*/
 class ToDoScreen extends StatelessWidget {
   ToDoScreen({super.key});
 
@@ -32,36 +30,9 @@ class ToDoScreen extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 270,
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Obx(() => TextField(
-                      cursorColor: CustomColorConstants.buttonBrightColor,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: _controller.isDarkMode.value
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                        hintText: 'Search',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        filled: true,
-                        fillColor: _controller.isDarkMode.value
-                            ? Colors.white
-                            : Colors.black,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                      ),
-                      style: TextStyle(
-                          color: _controller.isDarkMode.value
-                              ? Colors.black
-                              : Colors.white),
-                    )),
+              SizedBox(
+                width: 250,
+                height: 80,
               ),
               Container(
                 height: 70,
@@ -89,24 +60,17 @@ class ToDoScreen extends StatelessWidget {
                     stream: _toDoController.readTasks(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        if (_toDoController.searchWord.value.isEmpty) {
-                          final tasks = snapshot.data;
+                        final tasks = snapshot.data;
                           return ListView(
                             children: tasks!
-                                .map((task) => TodoItemWidget(task: task))
+                                .map((task) => GestureDetector(
+                                  onTap: (){
+                                    _toDoController.setSelectedTask(task);
+                                    Get.to(()=>TaskWidget());
+                                  },
+                                  child: TodoItemWidget(task: task)))
                                 .toList(),
                           );
-                        } else {
-                          final tasks = snapshot.data!.where((element) =>
-                              element.taskName.toLowerCase().contains(
-                                  _toDoController.searchWord.value
-                                      .toLowerCase()));
-                          return ListView(
-                            children: tasks
-                                .map((task) => TodoItemWidget(task: task))
-                                .toList(),
-                          );
-                        }
                       } else {
                         return const Center(
                             child: CircularProgressIndicator(
@@ -134,6 +98,8 @@ class ToDoScreen extends StatelessWidget {
     );
   }
 
+
+/*This is used to get the information to add a task to the todo list. User will provide the name, description and date to add a task.*/
   void _openAddTaskDialog(BuildContext context) {
     showDialog(
       context: context,
